@@ -6,15 +6,15 @@ import Player.Player;
 public abstract class Magician extends Player implements ISpell {
 
     int SP; // 20/20
-    Creature[] creatures;
+    Creature creature;
     Magician magician;
     Spell spell;
     int level;
 
-    public Magician(String name, int HP, int SP, Creature[] creatures) {
+    public Magician(String name, int HP, int SP, Creature creature) {
         super(name, HP);
         this.SP = SP;
-        this.creatures = new Creature[1];
+        this.creature = creature;
         this.level = 1;
     }
 
@@ -27,33 +27,33 @@ public abstract class Magician extends Player implements ISpell {
             int newHP = enemy.getHP() - spell.getHitpoint();
             enemy.setHP(newHP);
         } else {
-            System.out.println("You don't have enough spell point, try something else!");
+            System.out.println("You don't have enough spell points, try something else!");
         }
     }
 
-    public Creature[] getCreatures() {
-        return creatures;
+    public Creature getCreature() {
+        return creature;
     }
 
     public boolean hasCreature() {
-        return (creatures[0] != null);
+        return (creature != null);
     }
 
     public void summonCreature(Creature creature) {
         if (this.SP >= creature.pointsToSummon) {
-            creatures[0] = creature; // adds cr to list
+            this.creature = creature; // adds cr to list
             int newSP = this.SP - creature.pointsToSummon;
             setSP(newSP);
         }
     }
 
     public void unsummonCreature(Creature creature) {
-        creatures[0] = null;
+        creature = null;
     }
 
     public void changeCreature(Creature newCreature) {
         if (this.SP >= newCreature.pointsToSummon) {
-            creatures[0] = newCreature;
+            creature = newCreature;
             int newSP = this.SP - newCreature.pointsToSummon;
             setSP(newSP);
         }

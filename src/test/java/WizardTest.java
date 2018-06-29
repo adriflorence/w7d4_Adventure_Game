@@ -11,21 +11,27 @@ public class WizardTest {
 
     Wizard wizard;
     Orc orc;
-    Creature[] creatures;
-    Creature creature, creature1;
+    Creature dragon, werewolf;
 
     @Before
     public void setUp() throws Exception {
-        creature = new Creature("DRAGON", 80, 10);
-        creature1 = new Creature("WEREWOLF", 60, 8);
-        wizard = new Wizard("Steve", 100, 20, creatures);
+        wizard = new Wizard("Steve", 100, 100, null);
+        dragon = new Creature("Red Dragon", 100, 18);
+        werewolf = new Creature("werewolf", 80, 14);
         orc = new Orc("Adri", 100);
     }
 
     @Test
     public void canSummonCreature() {
-        wizard = new Wizard("Steve", 100, 2, creatures);
-        wizard.summonCreature(creature);
+        wizard.summonCreature(dragon);
+        assertEquals(true, wizard.hasCreature());
+        assertEquals(82, wizard.getSP());
+    }
+
+    @Test
+    public void cannotAffordCreature() {
+        wizard = new Wizard("Steve", 100, 2, null);
+        wizard.summonCreature(werewolf);
         assertEquals(false, wizard.hasCreature());
         orc.attack(wizard);
         assertEquals(80, wizard.getHP());
@@ -33,9 +39,9 @@ public class WizardTest {
 
     @Test
     public void creatureProtects() {
-        wizard.summonCreature(creature);
+        wizard.summonCreature(werewolf);
         orc.attack(wizard);
-        assertEquals(60, creature.getHP());
+        assertEquals(60, werewolf.getHP());
         assertEquals(100, wizard.getHP());
     }
 
@@ -43,13 +49,14 @@ public class WizardTest {
     public void canCastSpell(){
         wizard.damage(orc, Spell.LIGHTNINGBOLT);
         assertEquals(60 ,orc.getHP());
-        assertEquals(14, wizard.getSP());
+        assertEquals(94, wizard.getSP());
     }
 
     @Test
     public void canChangeCreature() {
-        wizard.summonCreature(creature);
-        wizard.changeCreature(creature1);
-        assertEquals(2, wizard.getSP());
+        wizard.summonCreature(werewolf); // 14 SP
+        wizard.changeCreature(dragon); // 18 SP
+        assertEquals(dragon, wizard.getCreature());
+        assertEquals(68, wizard.getSP());
     }
 }

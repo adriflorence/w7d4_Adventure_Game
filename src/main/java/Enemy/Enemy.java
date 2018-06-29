@@ -33,8 +33,8 @@ public abstract class Enemy {
 
     public void attack(Player player) {
         if(player instanceof Magician && ((Magician) player).hasCreature()){
-            int newHP = ((Magician) player).getCreatures()[0].getHP() - getAttackPoints();
-            ((Magician) player).getCreatures()[0].setHP(newHP);
+            int newHP = ((Magician) player).getCreature().getHP() - getAttackPoints();
+            ((Magician) player).getCreature().setHP(newHP);
         } else {
             int newHP = player.getHP() - getAttackPoints();
             player.setHP(newHP);
