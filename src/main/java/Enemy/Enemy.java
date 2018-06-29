@@ -1,5 +1,6 @@
 package Enemy;
 
+import Player.Fighters.Weapon;
 import Player.Magicians.Magician;
 import Player.Player;
 
@@ -7,12 +8,12 @@ public abstract class Enemy {
 
     String name;
     int HP;
-    int attackPoints;
+    Weapon weapon;
 
-    public Enemy(String name, int HP) {
+    public Enemy(String name, int HP, Weapon weapon) {
         this.name = name;
         this.HP = HP;
-        this.attackPoints = 20;
+        this.weapon = weapon;
     }
 
     public String getName() {
@@ -28,7 +29,7 @@ public abstract class Enemy {
     }
 
     public int getAttackPoints() {
-        return attackPoints;
+        return weapon.getHitpoint();
     }
 
     public void attack(Player player) {

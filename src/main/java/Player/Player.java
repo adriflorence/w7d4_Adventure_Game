@@ -1,5 +1,7 @@
 package Player;
 
+import Locations.Treasure;
+
 public abstract class Player {
 
     String name;
@@ -21,4 +23,6 @@ public abstract class Player {
     public void setHP(int HP) {
         this.HP = HP;
     }
+
+    public abstract void collect(Treasure treasure);
 }

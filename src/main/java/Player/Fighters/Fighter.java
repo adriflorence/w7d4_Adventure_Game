@@ -3,6 +3,7 @@ import Behaviours.IDamage;
 import Enemy.Enemy;
 
 import Player.Player;
+import Locations.Treasure;
 
 public abstract class Fighter extends Player implements IDamage {
 
@@ -28,8 +29,11 @@ public abstract class Fighter extends Player implements IDamage {
         enemy.setHP(newHP);
     }
 
-    public void changeWeapon(Weapon newWeapon) {
-        this.weapon = newWeapon;
+    public void collect(Treasure treasure) {
+        if (treasure instanceof Weapon) {
+            this.weapon = (Weapon)treasure;
+            System.out.println(this.getName() + "picked up a " + weapon.getName());
+        }
     }
 
 }

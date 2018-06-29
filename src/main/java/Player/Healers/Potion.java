@@ -1,17 +1,13 @@
 package Player.Healers;
+import Locations.Treasure;
 
-public class Potion {
+public class Potion extends Treasure {
 
-    String name;
     int healingPoint;
 
     public Potion(String name, int healingPoint) {
-        this.name = name;
+        super(name);
         this.healingPoint = healingPoint;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public int getHealingPoint() {

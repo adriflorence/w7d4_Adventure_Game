@@ -9,11 +9,15 @@ import static org.junit.Assert.assertEquals;
 public class KnightTest {
 
     Knight knight;
+    Weapon sword, saber, axe;
     Orc orc;
 
     @Before
     public void setUp() throws Exception {
-        knight = new Knight("Greg", 100, Weapon.SWORD, 50 );
+        sword = new Weapon( "sword", 12);
+        saber = new Weapon( "saber", 12);
+        axe = new Weapon( "sword", 12);
+        knight = new Knight("Greg", 100, sword, 50 );
         orc = new Orc("orc", 15);
     }
 
@@ -29,7 +33,7 @@ public class KnightTest {
 
     @Test
     public void hasWeapon() {
-        assertEquals( Weapon.SWORD, knight.getWeapon());
+        assertEquals( sword, knight.getWeapon());
     }
 
     @Test
@@ -40,12 +44,12 @@ public class KnightTest {
     @Test
     public void canDamage() {
         knight.damage(orc);
-        assertEquals(5, orc.getHP());
+        assertEquals(3, orc.getHP());
     }
 
     @Test
-    public void canChangeWeapon (){
-        knight.changeWeapon(Weapon.AXE);
-        assertEquals(Weapon.AXE, knight.getWeapon());
+    public void canCollectAndChangeWeapon (){
+        knight.collect(axe);
+        assertEquals(axe, knight.getWeapon());
     }
 }

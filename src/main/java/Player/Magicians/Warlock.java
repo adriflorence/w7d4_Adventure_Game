@@ -4,8 +4,8 @@ import Enemy.Enemy;
 
 public class Warlock extends Magician {
 
-    public Warlock(String name, int HP, int SP, Creature creature) {
-        super(name, HP, SP, creature);
+    public Warlock(String name, int HP, int SP, int maxSP, Creature creature) {
+        super(name, HP, SP, maxSP, creature);
     }
 
     public void damage(Enemy enemy, Spell spell) {

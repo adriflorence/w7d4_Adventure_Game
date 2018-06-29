@@ -15,7 +15,7 @@ public class WizardTest {
 
     @Before
     public void setUp() throws Exception {
-        wizard = new Wizard("Steve", 100, 100, null);
+        wizard = new Wizard("Steve", 100, 100, 100, null);
         dragon = new Creature("Red Dragon", 100, 18);
         werewolf = new Creature("werewolf", 80, 14);
         orc = new Orc("Adri", 100);
@@ -30,7 +30,7 @@ public class WizardTest {
 
     @Test
     public void cannotAffordCreature() {
-        wizard = new Wizard("Steve", 100, 2, null);
+        wizard = new Wizard("Steve", 100, 2, 100, null);
         wizard.summonCreature(werewolf);
         assertEquals(false, wizard.hasCreature());
         orc.attack(wizard);

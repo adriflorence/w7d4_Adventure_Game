@@ -12,10 +12,12 @@ public class ClericTest {
     Knight knight;
     Cleric cleric;
     Potion potion, largepotion;
+    Weapon sword;
 
     @Before
     public void setUp() throws Exception {
-        knight = new Knight("Adri", 80, Weapon.SWORD, 50);
+        sword = new Weapon("sword", 12);
+        knight = new Knight("Adri", 80, sword, 50);
         cleric = new Cleric("Father Greg", 100);
         potion = new Potion("red potion", 10);
         largepotion = new Potion("large potion", 50);

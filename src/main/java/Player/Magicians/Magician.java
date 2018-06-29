@@ -2,20 +2,26 @@ package Player.Magicians;
 import Behaviours.ISpell;
 import Enemy.Enemy;
 import Player.Player;
+import Locations.Treasure;
+
+import java.util.ArrayList;
 
 public abstract class Magician extends Player implements ISpell {
 
-    int SP; // 20/20
+    int SP;             // 20
+    final int maxSP;    // 100
     Creature creature;
-    Magician magician;
     Spell spell;
     int level;
+    ArrayList<Mana> manas;
 
-    public Magician(String name, int HP, int SP, Creature creature) {
+    public Magician(String name, int HP, int SP, int maxSP, Creature creature) {
         super(name, HP);
         this.SP = SP;
+        this.maxSP = maxSP;
         this.creature = creature;
         this.level = 1;
+        this.manas = new ArrayList<Mana>();
     }
 
     public boolean canCastSpell(Spell spell) {
@@ -65,5 +71,24 @@ public abstract class Magician extends Player implements ISpell {
 
     public void setSP(int SP) {
         this.SP = SP;
+    }
+
+    public void takeMana(Mana mana) {
+        if(SP + mana.getValue() >= maxSP) {
+            this.SP = maxSP;
+        } else {
+            this.SP += mana.getValue();
+        }
+    }
+
+    public void collect(Treasure treasure) {
+        // sets max number of manas at 5
+        if ((treasure instanceof Mana) && (manas.size() <= 5)){
+            manas.add((Mana)treasure);
+            System.out.println(this.getName() + "picked up a mana.");
+        } else {
+            System.out.println("you have no more space for manas. gotta have to leave this one.");
+        }
+
     }
 }

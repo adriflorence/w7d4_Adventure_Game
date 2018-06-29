@@ -1,6 +1,7 @@
 package Player.Healers;
 import Player.Player;
 import Behaviours.IHeal;
+import Locations.Treasure;
 
 import java.util.ArrayList;
 
@@ -24,6 +25,13 @@ public class Cleric extends Player implements IHeal {
             if (newHP > 100) {
                 player.setHP(100);
             }
+        }
+    }
+
+    public void collect(Treasure treasure) {
+        if (treasure instanceof Potion) {
+            healingStuff.add((Potion) treasure);
+            System.out.println(this.getName() + "picked up a " + treasure.getName());
         }
     }
 }

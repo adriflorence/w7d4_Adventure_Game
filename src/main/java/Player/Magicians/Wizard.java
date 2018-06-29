@@ -4,8 +4,8 @@ import Enemy.Enemy;
 
 public class Wizard extends Magician {
 
-    public Wizard(String name, int HP, int SP, Creature creature) {
-        super(name, HP, SP, creature);
+    public Wizard(String name, int HP, int SP, int maxSP, Creature creature) {
+        super(name, HP, SP, maxSP, creature);
     }
 
     public void damage(Enemy enemy, Spell spell) {

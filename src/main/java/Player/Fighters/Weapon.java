@@ -1,26 +1,24 @@
 package Player.Fighters;
 
-public enum Weapon {
+import Locations.Treasure;
 
-    SWORD(10, "sword"),
-    AXE(50, "axe"),
-    CLUB(30, "club"),
-    SPEAR(10, "speak");
+public class Weapon extends Treasure {
 
-    private final int hitpoint;
-    private final String name;
+//    SWORD(10, "sword"),
+//    AXE(50, "axe"),
+//    CLUB(30, "club"),
+//    SPEAR(10, "speak");
 
-    Weapon(int hitpoint, String name) {
+    private int hitpoint;
+
+    public Weapon(String name, int hitpoint) {
+        super(name);
         this.hitpoint = hitpoint;
-        this.name = name;
     }
 
     public int getHitpoint() {
         return hitpoint;
     }
 
-    public String getName() {
-        return name;
-    }
 
 }
