@@ -1,4 +1,5 @@
 import Enemy.Orc;
+import Player.Fighters.Weapon;
 import Player.Magicians.Creature;
 import Player.Magicians.Spell;
 import Player.Magicians.Wizard;
@@ -12,13 +13,15 @@ public class WizardTest {
     Wizard wizard;
     Orc orc;
     Creature dragon, werewolf;
+    Weapon club;
 
     @Before
     public void setUp() throws Exception {
+        club = new Weapon("club", 12);
         wizard = new Wizard("Steve", 100, 100, 100, null);
         dragon = new Creature("Red Dragon", 100, 18);
         werewolf = new Creature("werewolf", 80, 14);
-        orc = new Orc("Adri", 100);
+        orc = new Orc("Adri", 100, club);
     }
 
     @Test
@@ -34,14 +37,14 @@ public class WizardTest {
         wizard.summonCreature(werewolf);
         assertEquals(false, wizard.hasCreature());
         orc.attack(wizard);
-        assertEquals(80, wizard.getHP());
+        assertEquals(88, wizard.getHP());
     }
 
     @Test
     public void creatureProtects() {
         wizard.summonCreature(werewolf);
         orc.attack(wizard);
-        assertEquals(60, werewolf.getHP());
+        assertEquals(68, werewolf.getHP());
         assertEquals(100, wizard.getHP());
     }
 

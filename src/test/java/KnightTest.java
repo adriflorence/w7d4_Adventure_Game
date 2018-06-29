@@ -9,16 +9,17 @@ import static org.junit.Assert.assertEquals;
 public class KnightTest {
 
     Knight knight;
-    Weapon sword, saber, axe;
+    Weapon sword, saber, axe, dagger;
     Orc orc;
 
     @Before
     public void setUp() throws Exception {
+        dagger = new Weapon("dagger", 4);
         sword = new Weapon( "sword", 12);
         saber = new Weapon( "saber", 12);
         axe = new Weapon( "sword", 12);
         knight = new Knight("Greg", 100, sword, 50 );
-        orc = new Orc("orc", 15);
+        orc = new Orc("orc", 15, dagger);
     }
 
     @Test

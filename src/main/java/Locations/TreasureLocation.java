@@ -9,6 +9,7 @@ public class TreasureLocation extends Location {
         this.treasures = treasures;
     }
 
-
-
+    public ArrayList<Treasure> getTreasures() {
+        return treasures;
+    }
 }

@@ -1,11 +1,13 @@
 package Player;
 
 import Locations.Location;
+import Locations.TreasureLocation;
 
 public class Team {
 
     Player[] team;
     Gold gold;
+    int exp;
 
     public Team() {
         team = new Player[3];
@@ -18,7 +20,13 @@ public class Team {
         team[2] = player3;
     }
 
-
     public void enterRoom(Location location) {
+        if(location instanceof TreasureLocation) {
+            ((TreasureLocation) location).getTreasures();
+            System.out.println("you found treasure!");
+
+        } else {
+            System.out.println("oh no! enemies here!");
+        }
     }
 }
