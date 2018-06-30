@@ -7,7 +7,12 @@ public class EnemyLocation extends Location {
 
     ArrayList<Enemy> enemies;
 
-    public EnemyLocation(ArrayList<Enemy> enemies) {
+    public EnemyLocation(String name, String description, ArrayList<Enemy> enemies) {
+        super(name, description);
         this.enemies = enemies;
+    }
+
+    public ArrayList<Enemy> getEnemies() {
+        return enemies;
     }
 }

@@ -31,8 +31,12 @@ public abstract class Fighter extends Player implements IDamage {
 
     public void collect(Treasure treasure) {
         if (treasure instanceof Weapon) {
-            this.weapon = (Weapon)treasure;
-            System.out.println(this.getName() + "picked up a " + weapon.getName());
+            Weapon newWeapon = (Weapon)treasure;
+            if (newWeapon.getHitpoint() > this.weapon.getHitpoint() ){
+                this.weapon = newWeapon;
+                System.out.println(this.getName() + " picked up a " + weapon.getName() + ", that has " + weapon.getHitpoint() + " hitpoints");
+            }
+
         }
     }
 

@@ -83,11 +83,13 @@ public abstract class Magician extends Player implements ISpell {
 
     public void collect(Treasure treasure) {
         // sets max number of manas at 5
-        if ((treasure instanceof Mana) && (manas.size() <= 5)){
-            manas.add((Mana)treasure);
-            System.out.println(this.getName() + "picked up a mana.");
-        } else {
-            System.out.println("you have no more space for manas. gotta have to leave this one.");
+        if (treasure instanceof Mana) {
+            if (manas.size() <= 5) {
+                manas.add((Mana) treasure);
+                System.out.println(this.getName() + " picked up a mana.");
+            } else {
+                System.out.println(this.getName() + " have no more space for manas. gotta have to leave this one.");
+            }
         }
 
     }

@@ -31,7 +31,7 @@ public class Cleric extends Player implements IHeal {
     public void collect(Treasure treasure) {
         if (treasure instanceof Potion) {
             healingStuff.add((Potion) treasure);
-            System.out.println(this.getName() + "picked up a " + treasure.getName());
+            System.out.println(this.getName() + " picked up a " + treasure.getName());
         }
     }
 }

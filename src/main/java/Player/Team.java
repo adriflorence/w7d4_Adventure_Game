@@ -1,7 +1,12 @@
 package Player;
 
+import Enemy.Enemy;
+import Locations.EnemyLocation;
 import Locations.Location;
+import Locations.Treasure;
 import Locations.TreasureLocation;
+
+import java.util.ArrayList;
 
 public class Team {
 
@@ -22,11 +27,24 @@ public class Team {
 
     public void enterRoom(Location location) {
         if(location instanceof TreasureLocation) {
-            ((TreasureLocation) location).getTreasures();
-            System.out.println("you found treasure!");
-
+            ArrayList<Treasure> treasures = ((TreasureLocation) location).getTreasures();
+//            System.out.println("-treasure!");
+            teamCollect(treasures);
         } else {
-            System.out.println("oh no! enemies here!");
+            ArrayList<Enemy> enemies = ((EnemyLocation) location).getEnemies();
+            teamFight(enemies);
         }
+    }
+
+    public void teamCollect(ArrayList<Treasure> treasures) {
+        for(Player player : team) {
+            for (Treasure treasure : treasures) {
+                player.collect(treasure);
+            }
+        }
+    }
+
+    public void teamFight(ArrayList<Enemy> enemies) {
+        System.out.println("-enemies here!");
     }
 }
